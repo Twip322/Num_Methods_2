@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Num_Methods_2", "Num_Methods_2\Num_Methods_2.csproj", "{E5770CEC-EE8D-40BB-8FCC-12D0183AE253}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Num_Methods_3", "Num_Methods_3\Num_Methods_3.csproj", "{C20E39A9-5D2E-462B-A650-7CA6B3FE355B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E5770CEC-EE8D-40BB-8FCC-12D0183AE253}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5770CEC-EE8D-40BB-8FCC-12D0183AE253}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5770CEC-EE8D-40BB-8FCC-12D0183AE253}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C20E39A9-5D2E-462B-A650-7CA6B3FE355B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C20E39A9-5D2E-462B-A650-7CA6B3FE355B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C20E39A9-5D2E-462B-A650-7CA6B3FE355B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C20E39A9-5D2E-462B-A650-7CA6B3FE355B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
