@@ -14,12 +14,15 @@ namespace Num_Methods_7
     {
         public int a = 0;
         public int b = 2;
-        public double h = 0.166;
+        public double h;
         public Form1()
         {
             InitializeComponent();
         }
-
+        private double count(double x)
+        {
+            return (Math.Pow(x, 3) / (1 + Math.Pow(x, 2)));
+        }
         private void Trapeze()
         {
             double offset = a;
@@ -29,13 +32,15 @@ namespace Num_Methods_7
             {
                 if (offset == a)
                 {
-                    answer += (Math.Pow(offset, 3) / (1 + (Math.Pow(offset, 2)))) / 2;
+                    answer += count(offset) / 2;
                 }
                 else if (offset + h > b)
                 {
-                    answer += (Math.Pow(offset, 3) / (1 + (Math.Pow(offset, 2)))) / 2;
+                    answer += count(offset);
+                    offset = b;
+                    answer += count(offset) / 2;
                 }
-                else answer += (Math.Pow(offset, 3) / (1 + (Math.Pow(offset, 2))));
+                else answer += count(offset);
                 offset += h;
             }
             answer *= h;
@@ -47,13 +52,15 @@ namespace Num_Methods_7
             {
                 if (offset == a)
                 {
-                    answerDouble += (Math.Pow(offset, 3) / (1 + (Math.Pow(offset, 2)))) / 2;
+                    answerDouble += count(offset) / 2;
                 }
-                else if (offset + h > b)
+                else if (offset + hDouble > b)
                 {
-                    answerDouble += (Math.Pow(offset, 3) / (1 + (Math.Pow(offset, 2)))) / 2;
+                    answerDouble += count(offset);
+                    offset = b;
+                    answerDouble += count(offset) / 2;
                 }
-                else answerDouble += (Math.Pow(offset, 3) / (1 + (Math.Pow(offset, 2))));
+                else answerDouble += count(offset);
                 offset += hDouble;
             }
             answerDouble *= hDouble;
@@ -65,26 +72,30 @@ namespace Num_Methods_7
         {
             double offset = a;
             double answer = 0;
-            double testoffset = a;
-            while (testoffset < b-h)
-            {
-                testoffset += h;
-            }
+            bool period=true;
             while (offset < b)
             {
                 if (offset == a)
                 {
-                    answer += ((Math.Pow(offset, 3) / (1 + (Math.Pow(offset, 2)))) + (Math.Pow(testoffset, 3) / (1 + (Math.Pow(testoffset, 2))))) / 2;
+                    answer += count(offset) / 2;
                 }
-                else if (offset - h == a)
+                else if(offset+h>b && period)
                 {
-                    answer += (Math.Pow(offset, 3) / (1 + (Math.Pow(offset, 2)))) * 2;
+                    answer += count(offset)*2;
+                    offset = b;
+                    answer += count(offset) / 2;
                 }
-                else if (offset + h > b)
+                else if (period)
                 {
-                    answer += (Math.Pow(offset-h, 3) / (1 + (Math.Pow(offset - h, 2)))) * 2;
+                    answer += count(offset) * 2;
+                    period = false;
                 }
-                else answer += (Math.Pow(offset, 3) / (1 + (Math.Pow(offset, 2))));
+                else if (!period)
+                {
+                    answer += count(offset);
+                    period = true;
+                }
+                else answer += count(offset);
                 offset += h;
             }
             answer *= (2 * h) / 3;
@@ -92,37 +103,42 @@ namespace Num_Methods_7
             offset = a;
             double hDouble = h * 2;
             double answerDouble = 0;
-            testoffset = a;
-            while (testoffset < b - hDouble)
-            {
-                testoffset += hDouble;
-            }
+
             while (offset < b)
             {
                 if (offset == a)
                 {
-                    answerDouble += ((Math.Pow(offset, 3) / (1 + (Math.Pow(offset, 2)))) + (Math.Pow(testoffset, 3) / (1 + (Math.Pow(testoffset, 2))))) / 2;
+                    answerDouble += count(offset) / 2;
                 }
-                else if (offset - hDouble == a)
+                else if (offset + hDouble > b && period)
                 {
-                    answerDouble += (Math.Pow(offset, 3) / (1 + (Math.Pow(offset, 2)))) * 2;
+                    answerDouble += count(offset) * 2;
+                    offset = b;
+                    answerDouble += count(offset) / 2;
                 }
-                else if (offset + h > b)
+                else if (period)
                 {
-                    answerDouble += (Math.Pow(offset - hDouble, 3) / (1 + (Math.Pow(offset - hDouble, 2)))) * 2;
+                    answerDouble += count(offset) * 2;
+                    period = false;
                 }
-                else answerDouble += (Math.Pow(offset, 3) / (1 + (Math.Pow(offset, 2))));
+                else if (!period)
+                {
+                    answerDouble += count(offset);
+                    period = true;
+                }
+                else answerDouble += count(offset);
                 offset += hDouble;
             }
-            answerDouble *= (2 * hDouble) / 3;
+                answerDouble *= (2 * hDouble) / 3;
             richTextBoxSimpson.Text += $"При h={hDouble} формула Симпсона будет иметь значение: {Math.Round(answerDouble, 4)}\n";
-            double rule = Math.Abs(answer - answerDouble) / 15;
+            double rule = Math.Abs(answerDouble-answer) / 15;
             richTextBoxSimpson.Text += $"Вычислив по правилу Рунге погрешность, получаем : {Math.Round(rule, 7)}\n";
         }
         private void Start_Click(object sender, EventArgs e)
         {
             richTextBoxSimpson.Text = "";
             richTextBoxTrapeze.Text = "";
+            h = Convert.ToDouble(textBox1.Text);
             Trapeze();
             Simpson();
         }
