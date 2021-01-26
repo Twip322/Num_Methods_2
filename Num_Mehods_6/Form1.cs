@@ -118,8 +118,8 @@ namespace Num_Mehods_6
             disre = Math.Sqrt(disre);
             richTextBoxLag.Text += $"Невязка первой функции: {Math.Round(disre,4)} \n";
             double func = a * (Math.Pow(x0, 2)) + b * x0 + c;
-            int count = Math.Abs((int)Math.Log10(x0));
-            richTextBoxLag.Text += $"Функция в точке {x0} = {Math.Round(func,count)} \n";
+            //int count = Math.Abs((int)Math.Log10(x0));
+            richTextBoxLag.Text += $"Функция в точке {x0} = {Math.Round(func, 4)} \n";
         }
 
         private void approximationSecond()
@@ -173,7 +173,7 @@ namespace Num_Mehods_6
             double a = triangle1 / triangleUnder;
             double b = triangle2 / triangleUnder;
             double c = triangle3 / triangleUnder;
-            richTextBoxLag.Text += $"Аналитическая формула второй функции:y={Math.Round(a, 4)}*x^2+{Math.Round(b, 4)}*x+{Math.Round(c, 4)} \n";
+            richTextBoxLag.Text += $"Аналитическая формула второй функции:y={Math.Round(a, 4)}*x+{Math.Round(b, 4)}*e^-x+{Math.Round(c, 4)} \n";
             double disre = 0;
             for (int i = 0; i < xLine.Length; i++)
             {
@@ -182,8 +182,8 @@ namespace Num_Mehods_6
             disre = Math.Sqrt(disre);
             richTextBoxLag.Text += $"Невязка  функции: {Math.Round(disre, 4)} \n";
             double func = a * x0 + b * Math.Exp(-x0) + c;
-            int count = Math.Abs((int)Math.Log10(x0));
-            richTextBoxLag.Text += $"Функция в точке {x0} = {Math.Round(func, count)}\n";
+            //int count = Math.Abs((int)Math.Log10(x0));
+            richTextBoxLag.Text += $"Функция в точке {x0} = {Math.Round(func, 4)}\n";
         }
 
         private void Start_Click(object sender, EventArgs e)
