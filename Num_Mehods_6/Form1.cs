@@ -118,7 +118,6 @@ namespace Num_Mehods_6
             disre = Math.Sqrt(disre);
             richTextBoxLag.Text += $"Невязка первой функции: {Math.Round(disre,4)} \n";
             double func = a * (Math.Pow(x0, 2)) + b * x0 + c;
-            //int count = Math.Abs((int)Math.Log10(x0));
             richTextBoxLag.Text += $"Функция в точке {x0} = {Math.Round(func, 4)} \n";
         }
 
@@ -182,7 +181,6 @@ namespace Num_Mehods_6
             disre = Math.Sqrt(disre);
             richTextBoxLag.Text += $"Невязка  функции: {Math.Round(disre, 4)} \n";
             double func = a * x0 + b * Math.Exp(-x0) + c;
-            //int count = Math.Abs((int)Math.Log10(x0));
             richTextBoxLag.Text += $"Функция в точке {x0} = {Math.Round(func, 4)}\n";
         }
 
@@ -190,8 +188,9 @@ namespace Num_Mehods_6
         {
             richTextBoxLag.Text = "";
             x0 = Convert.ToDouble(textBoxfirst.Text);
-            approximationFirst();
+           
             approximationSecond();
+            approximationFirst();
         }
     }
 }
