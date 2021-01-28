@@ -12,8 +12,8 @@ namespace Num_Methods_7
 {
     public partial class Form1 : Form
     {
-        public int a = 0;
-        public int b = 2;
+        public int a = 1;
+        public int b = 4;
         public double h;
         public Form1()
         {
@@ -21,7 +21,7 @@ namespace Num_Methods_7
         }
         private double count(double x)
         {
-            return (Math.Pow(x, 3) / (1 + Math.Pow(x, 2)));
+            return (Math.Sqrt(x)/(x+1));
         }
         private void Trapeze()
         {
